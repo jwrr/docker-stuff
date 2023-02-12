@@ -1,11 +1,12 @@
-jwrr/luvit/Dockerfile
+jwrr/luvit-hello/Dockerfile
 =====================
 
-Luvit lua web server. Asynchronous I/O for Lua. Similar to Node.js.
+Luvit lua web server. Asynchronous I/O for Lua. Similar to Node.js. This is
+simple hello world example.
 
 * [Documentation](https://luvit.io/)
 * [Github](https://github.com/luvit/luvit)
-* [Coderwall](https://coderwall.com/p/gkokaw/luvit-node-s-ziggy-stardust)
+* [Coderwall - Ziggy Stardust slides](https://coderwall.com/p/gkokaw/luvit-node-s-ziggy-stardust)
 
 
 Build Docker Image and Container
@@ -13,18 +14,13 @@ Build Docker Image and Container
 
 ```
 ## Build Docker Image
-export DOCKERFILE_PATH=https://raw.githubusercontent.com/jwrr/docker-stuff/main/dockerfiles/luvit/Dockerfile
-export DOCKER_IMAGE_TAG=jwrr/luvit
-sudo docker build -t $DOCKER_IMAGE_TAG $DOCKERFILE_PATH
+sudo docker build -t jwrr/luvit-hello https://raw.githubusercontent.com/jwrr/docker-stuff/main/dockerfiles/luvit/luvit-hello/Dockerfile
 
 ## Verify image was built
 sudo docker images
 
 ## Create container from image
-export DOCKER_CONTAINER_NAME=luvit1
-export DOCKER_HOST_PORT=1337
-export DOCKER_CONTAINER_PORT=1337
-sudo docker create -p $DOCKER_HOST_PORT:$DOCKER_CONTAINER_PORT --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_TAG
+sudo docker create -p 1337:1337 --name luvit1 jwrr/luvit-hello
 
 ## Verify container was created
 sudo docker ps -a
@@ -36,7 +32,7 @@ Start and Run Docker Container
 
 ```
 ## Start container
-sudo docker start $DOCKER_CONTAINER_NAME
+sudo docker start luvit1
 sudo docker ps
 
 ## Use container
@@ -49,7 +45,7 @@ Stop Docker Container
 
 ```
 ## Stop container
-sudo docker stop $DOCKER_CONTAINER_NAME
+sudo docker stop luvit1
 
 ## Verify container is on longer active, but that it exists
 sudo docker ps
@@ -61,13 +57,13 @@ Remove Docker Container and Image
 
 ```
 ## Remove Container
-sudo docker rm $DOCKER_CONTAINER_NAME
+sudo docker rm luvit1
 
 ## Verify container has been removed
 sudo docker ps -a
 
 ## Remove Image
-sudo docker rmi $DOCKER_IMAGE_TAG
+sudo docker rmi jwrr/luvit-hello
 
 ## Verify image has beein removed
 sudo docker images
