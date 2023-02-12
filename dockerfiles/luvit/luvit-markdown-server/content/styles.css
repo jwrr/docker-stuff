@@ -13,3 +13,15 @@ img {
   width:50%;
 }
 
+pre, code {
+  font-family: monospace, monospace;
+  background-color: lightgreen;
+}
+pre {
+  overflow: auto;
+}
+pre > code {
+  display: block;
+  padding: 1rem;
+  word-wrap: normal;
+}

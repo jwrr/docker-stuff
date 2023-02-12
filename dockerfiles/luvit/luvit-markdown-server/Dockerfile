@@ -24,12 +24,12 @@ RUN ./configure --with-lua-include=/usr/local/include
 RUN make
 RUN make install
 
+RUN luarocks install luafilesystem
 RUN luarocks install lpeg
 RUN luarocks install cmark
 RUN apt-get -y install libyaml-dev
-RUN luarocks --server=http://rocks.moonscript.org install lyaml
+RUN luarocks install lua-yaml
 RUN luarocks install lcmark
-ENV PATH="$PATH:/lua_modules/bin"
 
 CMD ["/var/local/luvit/server.lua"]
 
