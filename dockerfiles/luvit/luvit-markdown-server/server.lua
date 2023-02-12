@@ -1,4 +1,8 @@
 #!/usr/local/bin/luvit
+
+package.path  = "/var/local/luarocks-3.8.0/lua_modules/share/lua/5.1/?.lua;" .. package.path
+package.cpath = "/var/local/luarocks-3.8.0/lua_modules/lib/lua/5.1/?.so;" .. package.cpath
+
 local http = require 'http'
 local https = require 'https'
 local url = require 'url'
@@ -6,9 +10,6 @@ local lfs = require 'lfs'
 
 --package.path=package.path..';/var/local/luvit/?.lua'
 --local markdown = require('markdown');
-
-package.path  = "/var/local/luarocks-3.8.0/lua_modules/share/lua/5.1/?.lua;" .. package.path
-package.cpath = "/var/local/luarocks-3.8.0/lua_modules/lib/lua/5.1/?.so;" .. package.cpath
 
  local lcmark = require("lcmark")
 
