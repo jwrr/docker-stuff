@@ -47,13 +47,14 @@ curl localhost:1337
 Stop Docker Container
 ---------------------
 
+```
 ## Stop container
 sudo docker stop $DOCKER_CONTAINER_NAME
 
 ## Verify container is on longer active, but that it exists
 sudo docker ps
 sudo docker ps -a
-
+```
 
 Remove Docker Container and Image
 ---------------------------------
