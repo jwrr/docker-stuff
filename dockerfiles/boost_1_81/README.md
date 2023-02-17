@@ -19,7 +19,7 @@ docker build -t jwrr/boost_1_81 .
 ```
 
 * This may take a while as dependencies are downloaded and
-  Boost is compile from source.
+  Boost is compiled from source.
 * You can change the tag's `jwrr` to your username.
 * The `.` specifies the directory that has this Dockerfile
 * Take a look at the Dockerfile. It's a simple text file that's
