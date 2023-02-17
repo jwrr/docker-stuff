@@ -42,7 +42,7 @@ docker run --rm -v .:/workspace jwrr/boost_1_81 g++ boost_version.cpp
 * The `--rm` option deletes the container after it's done.
 * The `-v` option maps a host directory to a container directory. This allows the
   container to access/compile host files. In this example your current host
-  working directory `.` is mapped to the containers `\workspace` directory.
+  working directory `.` is mapped to the container's `\workspace` directory.
 
 
 Let's try to compile using `make` directly on the host. Bonk, it fails because boost is
@@ -80,7 +80,7 @@ the script name, like so.
 docker run --rm -v .:/workspace jwrr/boost_1_81 bash compile.sh
 ```
 
-If you want to an interactive shell that runs in the container do the following.
+If you want an interactive shell that runs in the container do the following.
 
 ```
 docker run -it -v .:/workspace jwrr/boost_1_81 bash
