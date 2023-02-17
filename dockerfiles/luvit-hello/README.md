@@ -1,5 +1,5 @@
 jwrr/luvit-hello/Dockerfile
-=====================
+===========================
 
 Luvit lua web server. Asynchronous I/O for Lua. Similar to Node.js. This is
 simple hello world example.
@@ -9,35 +9,36 @@ simple hello world example.
 * [Coderwall - Ziggy Stardust slides](https://coderwall.com/p/gkokaw/luvit-node-s-ziggy-stardust)
 
 
-Build Docker Image and Container
---------------------------------
+Build Docker Image
+------------------
 
 ```
 ## Build Docker Image
-sudo docker build -t jwrr/luvit-hello https://raw.githubusercontent.com/jwrr/docker-stuff/main/dockerfiles/luvit/luvit-hello/Dockerfile
+docker build -t jwrr/luvit-hello .
 
 ## Verify image was built
-sudo docker images
+docker images
+```
 
+Run Docker Image
+----------------
+
+```
 ## Create container from image
-sudo docker create -p 1337:1337 --name luvit1 jwrr/luvit-hello
+docker run -d -p 1337:1337 --name luvit1 jwrr/luvit-hello
 
-## Verify container was created
-sudo docker ps -a
+## Verify container is running
+docker ps
 ```
 
+Use Docker Image
+----------------
 
-Start and Run Docker Container
---------------------
+From a host shell access the luvit server running in the docker container. You
+should see the response `Hello World`.
 
 ```
-## Start container
-sudo docker start luvit1
-sudo docker ps
-
-## Use container
 curl localhost:1337
-# You should see hello message
 ```
 
 Stop Docker Container
@@ -45,11 +46,11 @@ Stop Docker Container
 
 ```
 ## Stop container
-sudo docker stop luvit1
+docker stop luvit1
 
 ## Verify container is on longer active, but that it exists
-sudo docker ps
-sudo docker ps -a
+docker ps
+docker ps -a
 ```
 
 Remove Docker Container and Image
@@ -57,15 +58,15 @@ Remove Docker Container and Image
 
 ```
 ## Remove Container
-sudo docker rm luvit1
+docker rm luvit1
 
 ## Verify container has been removed
-sudo docker ps -a
+docker ps -a
 
 ## Remove Image
-sudo docker rmi jwrr/luvit-hello
+docker rmi jwrr/luvit-hello
 
 ## Verify image has beein removed
-sudo docker images
+docker images
 ```
 

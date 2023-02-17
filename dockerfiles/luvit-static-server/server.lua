@@ -60,7 +60,7 @@ end
 
 
 http.createServer(function (req, res)
-  local rootDir = '/var/local/luvit/content'
+  local rootDir = '/var/www/html/content'
   local processedUrl = processUrl(rootDir, req.url)
   local body = ''
   if processedUrl.fileFound then
