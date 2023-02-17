@@ -93,6 +93,6 @@ root# ./a.out
 * The `-it` option makes it an interactive session.
 * `bash` is the shell.
 * You will be `root` in the container, but not to the host.
-* **Warning** - Everything you put into the container will be lost when the
+* **Warning** - Everything you put into the container will be lost if/when the
   container is deleted. The exception is that files in the shared `\workspace`
   directory will stay on the host.
