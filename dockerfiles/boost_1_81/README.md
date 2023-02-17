@@ -40,7 +40,7 @@ docker run --rm -v .:/workspace jwrr/boost_1_81 g++ boost_version.cpp
 * The `run` command creates and starts a new container based on the
   boost image.
 * The `--rm` option deletes the container after it's done.
-* The `-v` option maps a host directory to a contain directory. This allows the
+* The `-v` option maps a host directory to a container directory. This allows the
   container to access/compile host files. In this example your current host
   working directory `.` is mapped to the containers `\workspace` directory.
 
