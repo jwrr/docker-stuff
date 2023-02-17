@@ -4,6 +4,13 @@ jwrr/boost_1_81/Dockerfile
 This Dockerfile creates an image that has boost_1_81 and g++ installed. It is
 based on ubuntu:20.04.
 
+To Install Docker
+-----------------
+
+**Do not use apt-get**.
+Go to the [Docker site](https://docs.docker.com/desktop/install/linux-install/)
+and follow the instructions.
+
 To Build the Image
 ------------------
 
