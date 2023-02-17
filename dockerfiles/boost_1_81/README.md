@@ -27,6 +27,13 @@ then be run on your host (or if you prefer, in your container).
 docker run --rm -v .:/workspace jwrr/boost_1_81 g++ boost_version.cpp
 ```
 
+* The `run` command spins up an new container based on the
+  boost image.
+* The `--rm` option deletes the container after it's done
+* The '-v' option maps a host directory to a contain directory. This allows the
+  container to access/compile host files.
+
+
 Let's try to compile using `make` on the host. It fails because boost is
 not installed.
 
@@ -56,12 +63,6 @@ docker run --rm -v .:/workspace jwrr/boost_1_81 ./a.out
 1_81
 
 ```
-
-* The `run` command spins up an new container based on the
-  boost image.
-* The `--rm` option deletes the container after it's done
-* The '-v' option maps a host directory to a contain directory. This allows the
-  container to access/compile host files.
 
 If you want to run a shell script then you need to specify the shell like so.
 
