@@ -83,7 +83,7 @@ docker run --rm -v .:/workspace jwrr/boost_1_81 bash compile.sh
 If you want to an interactive shell that runs in the container do the following.
 
 ```
-docker run -it --rm -v .:/workspace jwrr/boost_1_81 bash
+docker run -it -v .:/workspace jwrr/boost_1_81 bash
 root# pwd
 root# ls
 root# ./compile.sh
@@ -93,4 +93,6 @@ root# ./a.out
 * The `-it` option makes it an interactive session.
 * `bash` is the shell.
 * You will be `root` in the container, but not to the host.
-
+* **Warning** - Everything you put into the container will be lost when the
+  container is deleted. The exception is that files in the shared `\workspace`
+  directory will stay on the host.
