@@ -15,6 +15,8 @@ docker build -t jwrr/boost_1_81 .
   Boost is compile from source.
 * You can change the tag's username to your username.
 * The `.` specifies the directory that has this Dockerfile
+* Take a look at the Dockerfile. It's a simple text file that
+  is easy to understand and it's where the magic happens.
 
 To Compile a Program
 --------------------
@@ -27,14 +29,14 @@ then be run on your host (or if you prefer, in your container).
 docker run --rm -v .:/workspace jwrr/boost_1_81 g++ boost_version.cpp
 ```
 
-* The `run` command spins up an new container based on the
+* The `run` command spins up a new container based on the
   boost image.
-* The `--rm` option deletes the container after it's done
-* The '-v' option maps a host directory to a contain directory. This allows the
+* The `--rm` option deletes the container after it's done.
+* The `-v` option maps a host directory to a contain directory. This allows the
   container to access/compile host files.
 
 
-Let's try to compile using `make` on the host. It fails because boost is
+Let's try to compile using `make` directly on the host. Bonk, tt fails because boost is
 not installed.
 
 ```
@@ -47,21 +49,19 @@ compilation terminated.
 make: *** [Makefile:2: a.out] Error 1
 ```
 
-Now lets try it again using the Docker container.
+Now let's try compiling again using the Docker container.
 
 ```
 docker run --rm -v .:/workspace jwrr/boost_1_81 make
-docker run --rm -v .:/workspace jwrr/boost_1_81 make
 g++ boost_version.cpp
 
-## Run compiled program in host
+## You can run the compiled program on the host.
 ./a.out
 1_81
 
-## Run compiled program in container
+## Or you can run it in the container
 docker run --rm -v .:/workspace jwrr/boost_1_81 ./a.out
 1_81
-
 ```
 
 If you want to run a shell script then you need to specify the shell like so.
@@ -82,3 +82,4 @@ root# compile.sh
 * The `-it` option makes it an interactive session.
 * `bash` is the shell.
 * You will be `root` in the container, but not to the host.
+
