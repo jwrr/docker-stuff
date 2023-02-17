@@ -1,8 +1,8 @@
 jwrr/boost_1_81/Dockerfile
 ===========================
 
-This Docker image has boost_1_81 and g++ installed. It is based on 
-ubuntu:20.04. 
+This Dockerfile creates an image that has boost_1_81 and g++ installed. It is 
+based on ubuntu:20.04. 
 
 To build the Image
 ------------------
@@ -13,17 +13,18 @@ docker build -t jwrr/boost_1_81 .
 
 * This may take a while as dependencies are download and
   Boost is compile from source.
-* You can change the tag's username to your username.
+* You can change the tag's `jwrr` to your username.
 * The `.` specifies the directory that has this Dockerfile
-* Take a look at the Dockerfile. It's a simple text file that
-  is easy to understand and it's where the magic happens.
+* Take a look at the Dockerfile. It's a simple text file that's
+  easy to understand and it's where the magic happens.
 
 To Compile a Program
 --------------------
 
-This compiles your code that is located on the host with the gcc compiler
-and boost libraries located in the container. The resulting a.out can
-then be run on your host (or if you prefer, in your container).
+The following command compiles your code that is in your current host directory
+using the compiler (and boost library) that are in the Docker image. The 
+resulting a.out can then be run on your host (or if you prefer, in your
+container).
 
 ```
 docker run --rm -v .:/workspace jwrr/boost_1_81 g++ boost_version.cpp
