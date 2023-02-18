@@ -1,5 +1,6 @@
 -- srv.lua
 
+local lcmark = require'lcmark'
 local utils = require'utils'
 local err = require'err'
 
@@ -11,9 +12,10 @@ local srv = {}
 local contentTypes = {
   css = 'text/css',
   gif = 'image/gif',
---   html = 'text/html',
---   htm = 'text/html',
+  html = 'text/html',
+  htm = 'text/html',
   jpg = 'image/jpeg',
+  md  = 'text/html',
   png = 'image/x-png',
   svg = 'image/svg+xml',
   txt = 'text/plain'
@@ -56,11 +58,34 @@ function srv.getUrlFields(rootDir, reqUrl)
 end
 
 
+function srv.convertMarkdown(body)
+  local middle, metadata = lcmark.convert(body,"html", {smart = true})
+  local bot = "</body>\n</html>\n"
+  local top = [[
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>index.html - Home Page</title>
+  <link rel="stylesheet" type="text/css" href="markdown.css">
+
+</head>
+<body>
+
+]]
+  return top .. middle .. bot
+end
+
+
 function srv.getBody(req, res, contentDir)
   local urlFields = srv.getUrlFields(contentDir, req.url)
   local body = ''
   if urlFields.fileFound then
     body = utils.slurp(urlFields.fullPathName)
+    
+    if urlFields.fileType == 'md' then
+      body = srv.convertMarkdown(body)
+    end
   else
     body = err.handler(req, res, 404, contentDir)
   end

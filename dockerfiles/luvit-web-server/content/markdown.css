@@ -1,0 +1,20 @@
+
+body {
+  background-color: white;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+
+img {
+  max-width:300px;
+  width:50%;
+}
+
+pre {
+  width:90%;
+  background-color: gainsboro;
+  padding: 1em;
+}
