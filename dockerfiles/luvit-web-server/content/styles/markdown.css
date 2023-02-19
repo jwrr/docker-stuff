@@ -3,9 +3,11 @@ body {
   background-color: white;
 }
 
-h1 {
-  color: navy;
-  margin-left: 20px;
+h1,h2,h3,h4,h5 {
+  border-bottom: 1px solid gainsboro;
+  width: 100%;
+  display: block;
+  color: #333;
 }
 
 img {
@@ -13,8 +15,10 @@ img {
   width:50%;
 }
 
+/*
 pre {
   width:90%;
   background-color: gainsboro;
   padding: 1em;
 }
+*/

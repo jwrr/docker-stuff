@@ -17,7 +17,7 @@ Luvit Links
 Build Docker Image
 ------------------
 
-```
+```bash
 ## Set path to Dockerfile.  Here are two examples. The first is from github, 
 ## the second is current directory
 
@@ -44,20 +44,47 @@ docker run -d -p $DOCKER_HOST_PORT:$DOCKER_CONTAINER_PORT \
 docker ps
 ```
 
+As a side note, the syntax hightlighting css and js files are from highlight.js
+and are hosted and served here by this luvit web server, shown in the head of
+this html file.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>index.html - Home Page</title>
+  <link rel="stylesheet" type="text/css" href="markdown.css">
+
+<!--
+  <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+-->
+
+  <link rel="stylesheet" href="/styles/highlight/default.min.css">
+  <script src="/styles/highlight//highlight.min.js"></script>
+
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+```
+
+
 Use Docker Container
 --------------------
 
 Using firefox access the container on port 1337. You should see a web page with
 several image types and links.
 
-```
+```bash
 firefox localhost:1337
 ```
 
 Stop Docker Container
 ---------------------
 
-```
+```bash
 ## Stop container
 docker stop $DOCKER_CONTAINER_NAME
 
@@ -69,7 +96,7 @@ docker ps -a
 Remove Docker Container and Image
 ---------------------------------
 
-```
+```bash
 ## Remove Container
 docker rm $DOCKER_CONTAINER_NAME
 

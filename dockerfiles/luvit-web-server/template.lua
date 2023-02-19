@@ -3,9 +3,12 @@
 local utils = require'utils'
 local template = {}
 
-function template.replace(req, res, fileName)
-  local templateMap = {GetPath = req.url}
-  local html = utils.slurp(fileName)
+function template.replace(req, res, urlFields, templateName)
+  local templateMap = {
+    GetPath = req.url,
+    GetMarkdown = urlFields.markdown
+  }
+  local html = utils.slurp(templateName)
   for fromStr,toStr in pairs(templateMap) do
       local fromStr = '{' .. fromStr .. '}'
       html = html:gsub(fromStr, toStr)
