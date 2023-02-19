@@ -1,6 +1,8 @@
 jwrr/luvit-web-server/Dockerfile
 ================================
 
+DEVELOPMENT HAS MIGRATED to https://github.com/jwrr/luvit-web-server
+
 This Dockerfile makes a web server using Lua and Luvit. 
 Luvit provides asynchronous I/O for Lua, similar to Node.js.
 
