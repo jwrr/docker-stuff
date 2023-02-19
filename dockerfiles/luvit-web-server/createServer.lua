@@ -3,7 +3,7 @@
 -- createServer.lua
 
 package.path  = "/var/local/luarocks-3.8.0/lua_modules/share/lua/5.1/?.lua;" .. package.path
-package.path=package.path..';/var/www/html/?.lua'
+package.path=package.path..';/var/www/html/lua/?.lua'
 package.cpath = "/var/local/luarocks-3.8.0/lua_modules/lib/lua/5.1/?.so;" .. package.cpath
 
 local lfs = require 'lfs'

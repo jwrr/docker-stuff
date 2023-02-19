@@ -6,6 +6,23 @@ Luvit provides asynchronous I/O for Lua, similar to Node.js.
 
 Place your new content into the `content` folder.
 
+TLDR
+----
+
+`build-server` builds the docker container and `start-server` runs the 
+container. `use-server` opens firefox to the server home page.
+
+```bash
+source scripts/server-aliases.sh
+build-server
+start-server
+use-server
+restart-server
+server-status
+stop-server
+```
+
+
 Luvit Links
 -----------
 

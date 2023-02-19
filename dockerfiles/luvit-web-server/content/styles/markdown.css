@@ -1,8 +1,4 @@
 
-body {
-  background-color: white;
-}
-
 h1,h2,h3,h4,h5 {
   border-bottom: 1px solid gainsboro;
   width: 100%;
@@ -15,10 +11,3 @@ img {
   width:50%;
 }
 
-/*
-pre {
-  width:90%;
-  background-color: gainsboro;
-  padding: 1em;
-}
-*/

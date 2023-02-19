@@ -14,10 +14,26 @@ Luvit Links
 * [Coderwall](https://coderwall.com/p/gkokaw/luvit-node-s-ziggy-stardust)
 
 
+TLDR
+----
+
+`build-server` builds the docker container and `start-server` runs the 
+container. `use-server` opens firefox to the server home page.
+
+```bash
+source scripts/server-aliases.sh
+build-server
+start-server
+use-server
+restart-server
+server-status
+stop-server
+```
+
 Build Docker Image
 ------------------
 
-```
+```bash
 ## Set path to Dockerfile.  Here are two examples. The first is from github, 
 ## the second is current directory
 
@@ -50,14 +66,14 @@ Use Docker Container
 Using firefox access the container on port 1337. You should see a web page with
 several image types and links.
 
-```
+```bash
 firefox localhost:1337
 ```
 
 Stop Docker Container
 ---------------------
 
-```
+```bash
 ## Stop container
 docker stop $DOCKER_CONTAINER_NAME
 
@@ -69,7 +85,7 @@ docker ps -a
 Remove Docker Container and Image
 ---------------------------------
 
-```
+```bash
 ## Remove Container
 docker rm $DOCKER_CONTAINER_NAME
 
