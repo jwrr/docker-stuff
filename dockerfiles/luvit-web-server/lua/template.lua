@@ -5,7 +5,7 @@ local template = {}
 
 function template.replace(req, res, urlFields, templateName)
   local templateMap = {
-    GetPath = req.url,
+    GetPath = urlFields.urlFileName,
     GetMarkdown = urlFields.markdown
   }
   local html = utils.slurp(templateName)

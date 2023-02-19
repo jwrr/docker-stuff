@@ -16,9 +16,11 @@ local contentTypes = {
   htm = 'text/html',
   jpg = 'image/jpeg',
   js  = 'text/javascript',
+  lua = 'text/html',
   md  = 'text/html',
   png = 'image/x-png',
   svg = 'image/svg+xml',
+  template = 'text/html',
   ttf = 'font/ttf',
   txt = 'text/plain'
 }
@@ -52,6 +54,24 @@ function srv.getUrlFields(rootDir, reqUrl)
   local fullPathName = rootDir .. urlFileName;
   local fileFound = utils.fileExists(fullPathName)
 
+  local fullPathNameLua = fullPathName:gsub('.html$', '.lua')
+  local isLua = not fileFound and utils.fileExists(fullPathNameLua)
+  if isLua then
+    fileFound = true
+    fileType = 'lua'
+    fullPathName = fullPathNameLua
+    baseName = baseName:gsub('.html$', '.lua')
+  end
+  
+  local fullPathNameTemplate = fullPathName:gsub('.html$', '.template')
+  local isTemplate = not fileFound and utils.fileExists(fullPathNameTemplate)
+  if isTemplate then
+    fileFound = true
+    fileType = 'template'
+    fullPathName = fullPathNameTemplate
+    baseName = baseName:gsub('.html$', '.template')
+  end
+
   local contentType = srv.getContentType(fileType)
 
   local processedOutput = {fileType = fileType, pathName = pathName, urlFileName = urlFileName, baseName = baseName,
@@ -72,10 +92,16 @@ function srv.getBody(req, res, contentDir)
   local urlFields = srv.getUrlFields(contentDir, req.url)
   local body = ''
   if urlFields.fileFound then
-    body = utils.slurp(urlFields.fullPathName)
-    if urlFields.fileType == 'md' then
+    if urlFields.fileType == 'lua' then
+      body = dofile(urlFields.fullPathName)
+    elseif urlFields.fileType == 'template' then
+      body = template.replace(req, res, urlFields, urlFields.fullPathName)
+    elseif urlFields.fileType == 'md' then
       local markdownTemplateFile = contentDir .. '/templates/markdown.html'
+      body = utils.slurp(urlFields.fullPathName)
       body = srv.convertMarkdown(req, res, urlFields, markdownTemplateFile, body)
+    else
+      body = utils.slurp(urlFields.fullPathName)
     end
   else
     body = err.handler(req, res, urlFields, 404, contentDir)
